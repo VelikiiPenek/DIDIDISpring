@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${yslygi}" action="/yslygi/add" method="post">
+    <p>Название
+        <input th:field="*{nameYslygi}" type="text"  id="nameYslygi" name="nameYslygi" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('nameYslygi')}" th:errors="*{nameYslygi}"></div>
+    </p>
+    <p>Стоимость
+        <input th:field="*{costYslygi}" type="number"  id="costYslygi" name="costYslygi" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('costYslygi')}" th:errors="*{costYslygi}"></div>
+    </p>
+    <p>Время проведения
+        <input th:field="*{timeOfEvent}" type="text"  id="timeOfEvent" name="timeOfEvent" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('timeOfEvent')}" th:errors="*{timeOfEvent}"></div>
+    </p>
+    Набор
+    <select  name="nabor">
+        <div th:each="element : ${nabori}">
+            <option th:text="${element.nameKit}"></option>
+        </div>
+    </select>
+    Тип
+    <select  name="tip">
+        <div th:each="element : ${tipyslygi}">
+            <option th:text="${element.tipYslygi}"></option>
+        </div>
+    </select>
+    <input type="submit" value="Добавить услугу" class="btn btn-success"><br>
+</form><br>
+<a href="/yslygi/" class="btn btn-primary">Назад</a>
+</body>
+</html>

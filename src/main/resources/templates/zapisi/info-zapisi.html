@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Zapisi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${zapisi}">
+    Дата записи
+    <h2 th:text="${el.dataZapisi}"></h2>
+    Время начала
+    <h2 th:text="${el.vremyaNachala}"></h2>
+    Посещение
+    <h2 th:text="${el.visit}"></h2>
+    Клиент
+    <h2 th:text="${el.klient.surename}"></h2>
+    Услуга
+    <h2 th:text="${el.yslygi.nameYslygi}"></h2>
+    Сотрудник
+    <h2 th:text="${el.sotrydniki.surename}"></h2>
+    <a th:href="'/zapisi/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/zapisi/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/zapisi/" class="btn btn-primary">Назад к записям</a>
+</div>
+</body>
+</html>

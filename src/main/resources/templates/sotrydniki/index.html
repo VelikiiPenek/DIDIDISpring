@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sotrydniki</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/sotrydniki/search">
+    <input type="text" name="sotrydniki" id="sotrydniki">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${sotrydniki}">
+    <p>Фамилия</p>
+    <h2 th:text="${el.surename}"></h2>
+    <p>Имя</p>
+    <h2 th:text="${el.name}"></h2>
+    <p>Отчество</p>
+    <h2 th:text="${el.middlename}"></h2>
+    <p>Дата рождения</p>
+    <h2 th:text="${el.bornDate}"></h2>
+    <p>Адрес</p>
+    <h2 th:text="${el.adressEmployee}"></h2>
+    <p>Номер телефона</p>
+    <h2 th:text="${el.numberphone}"></h2>
+    <p>Набор</p>
+    <h2 th:text="${el.doljnost.namePost}"></h2>
+    <p>Тип</p>
+    <h2 th:text="${el.salon.naimenovanieSalona}"></h2>
+    <a th:href="'/sotrydniki/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/sotrydniki/add" class="btn btn-primary">Добавить сотрудника</a>
+
+</body>
+</html>

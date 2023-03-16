@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sotrydniki</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${sotrydniki}" action="/sotrydniki/add" method="post">
+    <p>Фамилия
+        <input th:field="*{surename}" type="text"  id="surename" name="surename" placeholder="Фамилия"><br>
+    <div th:if="${#fields.hasErrors('surename')}" th:errors="*{surename}"></div>
+    </p>
+    <p>Имя
+        <input th:field="*{name}" type="text"  id="name" name="name" placeholder="Имя"><br>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    </p>
+    <p>Отчество
+        <input th:field="*{middlename}" type="text"  id="middlename" name="middlename" placeholder="Отчество"><br>
+    <div th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div>
+    </p>
+    <p>Дата рождения
+        <input th:field="*{bornDate}" type="text"  id="bornDate" name="bornDate" placeholder="Дата рождения"><br>
+    <div th:if="${#fields.hasErrors('bornDate')}" th:errors="*{bornDate}"></div>
+    </p>
+    <p>Адрес
+        <input th:field="*{adressEmployee}" type="text"  id="adressEmployee" name="adressEmployee" placeholder="Адрес"><br>
+    <div th:if="${#fields.hasErrors('adressEmployee')}" th:errors="*{adressEmployee}"></div>
+    </p>
+    <p>Номер телефона
+        <input th:field="*{numberphone}" type="text"  id="numberphone" name="numberphone" placeholder="Номер телефона"><br>
+    <div th:if="${#fields.hasErrors('numberphone')}" th:errors="*{numberphone}"></div>
+    </p>
+    Должность
+    <select  name="doljnosti">
+        <div th:each="element : ${doljnosti}">
+            <option th:text="${element.namePost}"></option>
+        </div>
+    </select>
+    Салон
+    <select  name="salon">
+        <div th:each="element : ${salon}">
+            <option th:text="${element.naimenovanieSalona}"></option>
+        </div>
+    </select>
+    <input type="submit" value="Добавить сотрудника" class="btn btn-success"><br>
+</form><br>
+<a href="/sotrydniki/" class="btn btn-primary">Назад</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklad</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${nabori}">
+    Название
+    <h2 th:text="${el.nameKit}"></h2>
+    Адрес
+    <h2 th:text="${el.adressSklada.adresSklada}"></h2>
+    <a th:href="'/nabori/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/nabori/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/nabori/" class="btn btn-primary">Назад к наборам</a>
+</div>
+</body>
+</html>

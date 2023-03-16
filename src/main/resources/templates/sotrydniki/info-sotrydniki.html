@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sotrydniki</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${sotrydniki}">
+    Фамилия
+    <h2 th:text="${el.surename}"></h2>
+    Имя
+    <h2 th:text="${el.name}"></h2>
+    Отчество
+    <h2 th:text="${el.middlename}"></h2>
+    Дата рождения
+    <h2 th:text="${el.bornDate}"></h2>
+    Адрес
+    <h2 th:text="${el.adressEmployee}"></h2>
+    Номер телефона
+    <h2 th:text="${el.numberphone}"></h2>
+    Набор
+    <h2 th:text="${el.doljnost.namePost}"></h2>
+    Тип
+    <h2 th:text="${el.salon.naimenovanieSalona}"></h2>
+    <a th:href="'/sotrydniki/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/sotrydniki/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/sotrydniki/" class="btn btn-primary">Назад к сотрудникам</a>
+</div>
+</body>
+</html>

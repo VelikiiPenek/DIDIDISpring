@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${yslygi}">
+    Название
+    <h2 th:text="${el.nameYslygi}"></h2>
+    Стоимость
+    <h2 th:text="${el.costYslygi}"></h2>
+    Время проведения
+    <h2 th:text="${el.timeOfEvent}"></h2>
+    Набор
+    <h2 th:text="${el.nabori.nameKit}"></h2>
+    Тип
+    <h2 th:text="${el.tipYslygi.tipYslygi}"></h2>
+    <a th:href="'/yslygi/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/yslygi/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/yslygi/" class="btn btn-primary">Назад к услугам</a>
+</div>
+</body>
+</html>

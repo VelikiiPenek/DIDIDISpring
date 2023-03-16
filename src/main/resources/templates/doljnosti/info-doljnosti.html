@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doljnosti</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${doljnosti}">
+    <p>Название
+    <h2 th:text="${el.namePost}"></h2>
+    </p>
+    <p>Оклад
+    <h2 th:text="${el.postPrice}"></h2>
+    </p>
+    <a th:href="'/doljnosti/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/doljnosti/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/doljnosti/" class="btn btn-primary">Назад к должностям</a>
+</div>
+</body>
+</html>

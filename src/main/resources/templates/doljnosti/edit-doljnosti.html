@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doljnosti</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${doljnosti}" align="center">
+    <form th:object="${doljnosti}" th:action="'/doljnosti/edit/'+${el.id}" method="post">
+        <p>Название
+            <input th:field="*{namePost}" type="text" style="background-color: chocolate" th:value="${el.namePost}" id="namePost" name="namePost" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('namePost')}" th:errors="*{namePost}"></div>
+        </p>
+        <p>Оклад
+            <input th:field="*{postPrice}" type="number" style="background-color: chocolate" th:value="${el.postPrice}" id="postPrice" name="postPrice" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('postPrice')}" th:errors="*{postPrice}"></div>
+        </p>
+        <input type="submit" value="Изменить должность" class="btn btn-success"><br>
+        <a href="/doljnost/" class="btn btn-primary">Назад к должностям</a>
+    </form><br>
+</div>
+</body>
+</html>

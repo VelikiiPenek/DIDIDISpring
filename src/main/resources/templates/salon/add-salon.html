@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${salon}" action="/salon/add" method="post">
+    <p>Название
+        <input th:field="*{naimenovanieSalona}" type="text"  id="naimenovanieSalona" name="naimenovanieSalona" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('naimenovanieSalona')}" th:errors="*{naimenovanieSalona}"></div>
+    </p>
+    <p>Площадь
+        <input th:field="*{ploshyad}" type="text"  id="ploshyad" name="ploshyad" placeholder="Площадь"><br>
+    <div th:if="${#fields.hasErrors('naimenovanieSalona')}" th:errors="*{naimenovanieSalona}"></div>
+    </p>
+    <p>Кол-во мест
+        <input th:field="*{kolVoMest}" type="number"  id="kolVoMest" name="kolVoMest" placeholder="Кол-во мест"><br>
+    <div th:if="${#fields.hasErrors('kolVoMest')}" th:errors="*{kolVoMest}"></div>
+    </p>
+    <p>Время работы
+        <input th:field="*{vremyaRaboti}" type="text"  id="vremyaRaboti" name="vremyaRaboti" placeholder="Время работы"><br>
+    <div th:if="${#fields.hasErrors('vremyaRaboti')}" th:errors="*{vremyaRaboti}"></div>
+    </p>
+    Адрес склада
+    <select  name="adressalona">
+        <div th:each="element : ${adressalona}">
+            <option th:text="${element.adresSalona}"></option>
+        </div>
+    </select>
+    <input type="submit" value="Добавить салон" class="btn btn-success"><br>
+</form><br>
+<a href="/salon/" class="btn btn-primary">Назад</a>
+</body>
+</html>

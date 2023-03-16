@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AdresSalona</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${adressalona}">
+    <p>Адрес
+    <h2 th:text="${el.adresSalona}"></h2>
+    </p>
+    <a th:href="'/adressalona/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/adressalona/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/adressalona/" class="btn btn-primary">Назад к адресам</a>
+</div>
+</body>
+</html>

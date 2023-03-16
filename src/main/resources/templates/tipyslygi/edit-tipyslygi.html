@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TipYslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${tipyslygi}" align="center">
+    <form th:object="${tipyslygi}" th:action="'/tipyslygi/edit/'+${el.id}" method="post">
+        <p>Тип
+            <input th:field="*{tipYslygi}" type="text" style="background-color: chocolate" th:value="${el.tipYslygi}" id="tipyslygi" name="tipyslygi" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('tipYslygi')}" th:errors="*{tipYslygi}"></div>
+        </p>
+        <input type="submit" value="Изменить тип услуги" class="btn btn-success"><br>
+        <a href="/tipyslygi/" class="btn btn-primary">Назад к типам услуг</a>
+    </form><br>
+</div>
+</body>
+</html>

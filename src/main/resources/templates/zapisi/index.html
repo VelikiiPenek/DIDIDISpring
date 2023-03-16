@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Zapisi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/zapisi/search">
+    <input type="text" name="zapisi" id="zapisi">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${zapisi}">
+    <p>Дата</p>
+    <h2 th:text="${el.dataZapisi}"></h2>
+    <p>Время начала</p>
+    <h2 th:text="${el.vremyaNachala}"></h2>
+    <p>Посещение</p>
+    <h2 th:text="${el.visit}"></h2>
+    <p>Клиент</p>
+    <h2 th:text="${el.klient.surename}"></h2>
+    <p>Услуга</p>
+    <h2 th:text="${el.yslygi.nameYslygi}"></h2>
+    <p>Сотрудник</p>
+    <h2 th:text="${el.sotrydniki.surename}"></h2>
+    <a th:href="'/zapisi/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/zapisi/add" class="btn btn-primary">Добавить запись</a>
+
+</body>
+</html>

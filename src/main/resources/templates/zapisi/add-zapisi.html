@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Zapisi</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${zapisi}" action="/zapisi/add" method="post">
+  <p>Дата
+    <input th:field="*{dataZapisi}" type="text"  id="dataZapisi" name="dataZapisi" placeholder="Дата"><br>
+  <div th:if="${#fields.hasErrors('dataZapisi')}" th:errors="*{dataZapisi}"></div>
+  </p>
+  <p>Время начала
+    <input th:field="*{vremyaNachala}" type="text"  id="vremyaNachala" name="vremyaNachala" placeholder="Время начала"><br>
+  <div th:if="${#fields.hasErrors('vremyaNachala')}" th:errors="*{vremyaNachala}"></div>
+  </p>
+  <p>Посещение
+    <input th:field="*{visit}" type="text"  id="visit" name="visit" placeholder="Посещение"><br>
+  <div th:if="${#fields.hasErrors('visit')}" th:errors="*{visit}"></div>
+  </p>
+  Клиент
+  <select  name="klient">
+    <div th:each="element : ${klient}">
+      <option th:text="${element.surename}"></option>
+    </div>
+  </select>
+  Услуга
+  <select  name="yslygi">
+    <div th:each="element : ${yslygi}">
+      <option th:text="${element.nameYslygi}"></option>
+    </div>
+  </select>
+  Сотрудник
+  <select  name="sotrydniki">
+    <div th:each="element : ${sotrydniki}">
+      <option th:text="${element.surename}"></option>
+    </div>
+  </select>
+  <input type="submit" value="Добавить запись" class="btn btn-success"><br>
+</form><br>
+<a href="/zapisi/" class="btn btn-primary">Назад</a>
+</body>
+</html>

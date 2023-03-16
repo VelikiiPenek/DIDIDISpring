@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doljnost</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/doljnosti/search">
+    <input type="text" name="doljnosti" id="doljnosti">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${doljnosti}">
+    <p>Название</p>
+    <h2 th:text="${el.namePost}"></h2>
+    <p>Оклад</p>
+    <h2 th:text="${el.postPrice}"></h2>
+    <a th:href="'/doljnosti/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/doljnosti/add" class="btn btn-primary">Добавить должность</a>
+
+</body>
+</html>

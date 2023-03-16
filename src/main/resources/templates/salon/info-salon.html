@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div align="center" th:each="el : ${salon}">
+    Название
+    <h2 th:text="${el.naimenovanieSalona}"></h2>
+    Площадь
+    <h2 th:text="${el.ploshyad}"></h2>
+    Кол-во мест
+    <h2 th:text="${el.kolVoMest}"></h2>
+    Время работы
+    <h2 th:text="${el.vremyaRaboti}"></h2>
+    Адрес салона
+    <h2 th:text="${el.adresSalona.adresSalona}"></h2>
+    <a th:href="'/salon/del/' + ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/salon/edit/' + ${el.id}" class="btn btn-warning">Изменить</a><br>
+    <a href="/salon/" class="btn btn-primary">Назад к салонам</a>
+</div>
+</body>
+</html>

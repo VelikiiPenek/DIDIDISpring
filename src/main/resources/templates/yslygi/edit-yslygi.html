@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${yslygi}" align="center">
+    <form th:object="${yslygi}" th:action="'/yslygi/edit/'+${el.id}" method="post">
+        <p>Название
+            <input th:field="*{nameYslygi}" type="text" style="background-color: chocolate" th:value="${el.nameYslygi}" id="nameYslygi" name="nameYslygi" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('nameYslygi')}" th:errors="*{nameYslygi}"></div>
+        </p>
+        <p>Стоимость
+            <input th:field="*{costYslygi}" type="number" style="background-color: chocolate" th:value="${el.costYslygi}" id="costYslygi" name="costYslygi" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('costYslygi')}" th:errors="*{costYslygi}"></div>
+        </p>
+        <p>Время проведения
+            <input th:field="*{timeOfEvent}" type="text" style="background-color: chocolate" th:value="${el.timeOfEvent}" id="timeOfEvent" name="timeOfEvent" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('timeOfEvent')}" th:errors="*{timeOfEvent}"></div>
+        </p>
+        <select  name="nabor">
+            <div th:each="element : ${nabori}">
+                <option th:text="${element.nameKit}"></option>
+            </div>
+        </select>
+        <select  name="tip">
+            <div th:each="element : ${tipyslygi}">
+                <option th:text="${element.tipYslygi}"></option>
+            </div>
+        </select>
+        <input type="submit" value="Изменить услугу" class="btn btn-success"><br>
+        <a href="/yslygi/" class="btn btn-primary">Назад к услугам</a>
+    </form><br>
+</div>
+</body>
+</html>

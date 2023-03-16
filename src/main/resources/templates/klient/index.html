@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Klient</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/klient/search">
+    <input type="text" name="klient" id="klient">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${klient}">
+    <p>Фамилия</p>
+    <h2 th:text="${el.surename}"></h2>
+    <p>Имя</p>
+    <h2 th:text="${el.name}"></h2>
+    <p>Отчество</p>
+    <h2 th:text="${el.middlename}"></h2>
+    <p>Номер телефона</p>
+    <h2 th:text="${el.numberphone}"></h2>
+    <a th:href="'/klient/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/klient/add" class="btn btn-primary">Добавить клиента</a>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nabori</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/nabori/search">
+    <input type="text" name="nabori" id="nabori">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${nabori}">
+    <p>Название</p>
+    <h2 th:text="${el.nameKit}"></h2>
+    <p>Адрес</p>
+    <h2 th:text="${el.adressSklada.adresSklada}"></h2>
+    <a th:href="'/nabori/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/nabori/add" class="btn btn-primary">Добавить набор</a>
+
+</body>
+</html>

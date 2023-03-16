@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklad</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/sklad/search">
+    <input type="text" name="sklad" id="sklad">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${sklad}">
+    <p>Адрес</p>
+    <h2 th:text="${el.adresSklada}"></h2>
+    <a th:href="'/sklad/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/sklad/add" class="btn btn-primary">Добавить адрес склада</a>
+
+</body>
+</html>

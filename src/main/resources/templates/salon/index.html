@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/salon/search">
+    <input type="text" name="salon" id="salon">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${salon}">
+    <p>Название</p>
+    <h2 th:text="${el.naimenovanieSalona}"></h2>
+    <p>Площадь</p>
+    <h2 th:text="${el.ploshyad}"></h2>
+    <p>Кол-во мест</p>
+    <h2 th:text="${el.kolVoMest}"></h2>
+    <p>Время работы</p>
+    <h2 th:text="${el.vremyaRaboti}"></h2>
+    <p>Адрес</p>
+    <h2 th:text="${el.adresSalona.adresSalona}"></h2>
+    <a th:href="'/salon/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/salon/add" class="btn btn-primary">Добавить салон</a>
+
+</body>
+</html>

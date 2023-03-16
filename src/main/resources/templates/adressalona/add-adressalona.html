@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AdresSalona</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${adressalona}" action="/adressalona/add" method="post">
+    <p>Адрес
+        <input th:field="*{adresSalona}" type="text"  id="adresSalona" name="adresSalona" placeholder="Адрес"><br>
+    <div th:if="${#fields.hasErrors('adresSalona')}" th:errors="*{adresSalona}"></div>
+    <p/>
+    <input type="submit" value="Добавить адрес" class="btn btn-success"><br>
+</form><br>
+<a href="/adressalona/" class="btn btn-primary">Назад</a>
+</body>
+</html>

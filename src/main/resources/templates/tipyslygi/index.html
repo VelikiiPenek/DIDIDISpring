@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TipYslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/tipyslygi/search">
+    <input type="text" name="tipyslygi" id="tipyslygi">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${tipyslygi}">
+    <p>Тип</p>
+    <h2 th:text="${el.tipYslygi}"></h2>
+    <a th:href="'/tipyslygi/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/tipyslygi/add" class="btn btn-primary">Добавить тип услуги</a>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doljnosti</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${klient}" align="center">
+    <form th:object="${klient}" th:action="'/klient/edit/'+${el.id}" method="post">
+        <p>Фамилия
+            <input th:field="*{surename}" type="text"  id="surename" name="surename" placeholder="Фамилия"><br>
+        <div th:if="${#fields.hasErrors('surename')}" th:errors="*{surename}"></div>
+        </p>
+        <p>Имя
+            <input th:field="*{name}" type="text"  id="name" name="name" placeholder="Имя"><br>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </p>
+        <p>Отчество
+            <input th:field="*{middlename}" type="text"  id="middlename" name="middlename" placeholder="Отчество"><br>
+        <div th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div>
+        </p>
+        <p>Номер телефона
+            <input th:field="*{numberphone}" type="text"  id="numberphone" name="numberphone" placeholder="Номер телефона"><br>
+        <div th:if="${#fields.hasErrors('numberphone')}" th:errors="*{numberphone}"></div>
+        </p>
+        <input type="submit" value="Изменить клиента" class="btn btn-success"><br>
+        <a href="/klient/" class="btn btn-primary">Назад к клиентам</a>
+    </form><br>
+</div>
+</body>
+</html>

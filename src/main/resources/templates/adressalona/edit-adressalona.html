@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AdresSalona</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${adressalona}" align="center">
+    <form th:object="${adressalona}" th:action="'/adressalona/edit/'+${el.id}" method="post">
+        <p>Адрес
+            <input th:field="*{adresSalona}" type="text" style="background-color: chocolate" th:value="${el.adresSalona}" id="adresSalona" name="adresSalona" placeholder="Адрес"><br>
+        <div th:if="${#fields.hasErrors('adresSalona')}" th:errors="*{adresSalona}"></div>
+        </p>
+        <input type="submit" value="Изменить должность" class="btn btn-success"><br>
+        <a href="/adressklada/" class="btn btn-primary">Назад к адресам</a>
+    </form><br>
+</div>
+</body>
+</html>

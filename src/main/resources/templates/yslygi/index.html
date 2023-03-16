@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yslygi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<form method="get" action="/yslygi/search">
+    <input type="text" name="yslygi" id="yslygi">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="display: inline-block" th:each="el : ${yslygi}">
+    <p>Название</p>
+    <h2 th:text="${el.nameYslygi}"></h2>
+    <p>Стоимость</p>
+    <h2 th:text="${el.costYslygi}"></h2>
+    <p>Название</p>
+    <h2 th:text="${el.timeOfEvent}"></h2>
+    <p>Набор</p>
+    <h2 th:text="${el.nabori.nameKit}"></h2>
+    <p>Тип</p>
+    <h2 th:text="${el.tipYslygi.tipYslygi}"></h2>
+    <a th:href="'/yslygi/' + ${el.id}">Открыть</a>
+</div>
+
+<a href="/yslygi/add" class="btn btn-primary">Добавить услугу</a>
+
+</body>
+</html>

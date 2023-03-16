@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nabori</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<form th:object="${nabori}" action="/nabori/add" method="post">
+    <p>Название
+        <input th:field="*{nameKit}" type="text"  id="nameKit" name="nameKit" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('nameKit')}" th:errors="*{nameKit}"></div>
+    Адрес склада
+    <select  name="adres">
+        <div th:each="element : ${sklad}">
+            <option th:text="${element.adresSklada}"></option>
+        </div>
+    </select>
+    <input type="submit" value="Добавить набор" class="btn btn-success"><br>
+</form><br>
+<a href="/nabori/" class="btn btn-primary">Назад</a>
+</body>
+</html>

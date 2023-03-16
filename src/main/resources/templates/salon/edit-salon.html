@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Salon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+
+<div th:each="el : ${salon}" align="center">
+    <form th:object="${salon}" th:action="'/salon/edit/'+${el.id}" method="post">
+        <p>Название
+            <input th:field="*{naimenovanieSalona}" type="text" style="background-color: chocolate" th:value="${el.naimenovanieSalona}" id="naimenovanieSalona" name="naimenovanieSalona" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('naimenovanieSalona')}" th:errors="*{naimenovanieSalona}"></div>
+        </p>
+        <p>Площадь
+            <input th:field="*{ploshyad}" type="text" style="background-color: chocolate" th:value="${el.ploshyad}" id="ploshyad" name="ploshyad" placeholder="Площадь"><br>
+        <div th:if="${#fields.hasErrors('ploshyad')}" th:errors="*{ploshyad}"></div>
+        </p>
+        <p>Количество мест
+            <input th:field="*{kolVoMest}" type="number" style="background-color: chocolate" th:value="${el.kolVoMest}" id="kolVoMest" name="kolVoMest" placeholder="Кол-во мест"><br>
+        <div th:if="${#fields.hasErrors('kolVoMest')}" th:errors="*{kolVoMest}"></div>
+        </p>
+        <p>Веремя работы
+            <input th:field="*{vremyaRaboti}" type="text" style="background-color: chocolate" th:value="${el.vremyaRaboti}" id="vremyaRaboti" name="vremyaRaboti" placeholder="Время работы"><br>
+        <div th:if="${#fields.hasErrors('vremyaRaboti')}" th:errors="*{vremyaRaboti}"></div>
+        </p>
+        Адрес салона
+        <select  name="adressalona">
+            <div th:each="element : ${adressalona}">
+                <option th:text="${element.adresSalona}"></option>
+            </div>
+        </select>
+        <input type="submit" value="Изменить салон" class="btn btn-success"><br>
+        <a href="/salon/" class="btn btn-primary">Назад к салонам</a>
+    </form><br>
+</div>
+</body>
+</html>
